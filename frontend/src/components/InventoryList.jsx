@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import Barcode from 'react-barcode';
-import { Pencil, Trash2, QrCode, Plus } from 'lucide-react'; // Import icons
+import { Pencil, Trash2, QrCode, Plus } from 'lucide-react';
 
 export default function InventoryList() {
   const [products, setProducts] = useState([]);
@@ -97,13 +97,14 @@ export default function InventoryList() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <h1 className="text-2xl font-bold text-slate-800">Inventory Management</h1>
         
         {userRole !== 'Operator' && (
           <button 
             onClick={openCreateModal}
-            className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+            className="w-full md:w-auto flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Product
@@ -111,53 +112,59 @@ export default function InventoryList() {
         )}
       </div>
 
-      <div className="bg-white shadow-sm rounded-xl overflow-hidden border border-slate-200">
-        <table className="min-w-full divide-y divide-slate-200">
-          <thead className="bg-slate-50">
-            <tr>
-              {['SKU', 'Name', 'Category', 'Price', 'Stock', 'Actions'].map((head) => (
-                <th key={head} className="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  {head}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-slate-200">
-            {products.map((product) => (
-              <tr key={product.id} className="hover:bg-slate-50 transition-colors">
-                <td className="px-6 py-4 whitespace-nowrap font-mono text-sm text-slate-600">{product.sku}</td>
-                <td className="px-6 py-4 whitespace-nowrap font-medium text-slate-900">{product.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-slate-500">{product.category}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-slate-900 font-medium">${product.price}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                    product.total_quantity <= product.low_stock_threshold 
-                      ? 'bg-red-100 text-red-700' 
-                      : 'bg-emerald-100 text-emerald-700'
-                  }`}>
-                    {product.total_quantity}
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex items-center space-x-3">
-                  <button onClick={() => setViewBarcode(product)} className="text-slate-400 hover:text-slate-700 transition-colors" title="View Barcode">
-                    <QrCode className="w-5 h-5" />
-                  </button>
-
-                  {userRole !== 'Operator' && (
-                    <>
-                      <button onClick={() => openEditModal(product)} className="text-indigo-400 hover:text-indigo-600 transition-colors" title="Edit">
-                        <Pencil className="w-5 h-5" />
-                      </button>
-                      <button onClick={() => handleDelete(product.id)} className="text-red-400 hover:text-red-600 transition-colors" title="Delete">
-                        <Trash2 className="w-5 h-5" />
-                      </button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* RESPONSIVE TABLE WRAPPER */}
+      <div className="bg-white shadow-sm rounded-xl border border-slate-200 flex flex-col">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table className="min-w-full divide-y divide-slate-200">
+                <thead className="bg-slate-50">
+                  <tr>
+                    {['SKU', 'Name', 'Category', 'Price', 'Stock', 'Actions'].map((head) => (
+                      <th key={head} className="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        {head}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-slate-200">
+                  {products.map((product) => (
+                    <tr key={product.id} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 whitespace-nowrap font-mono text-sm text-slate-600">{product.sku}</td>
+                      <td className="px-6 py-4 whitespace-nowrap font-medium text-slate-900">{product.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-slate-500">{product.category}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-slate-900 font-medium">${product.price}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                          product.total_quantity <= product.low_stock_threshold 
+                            ? 'bg-red-100 text-red-700' 
+                            : 'bg-emerald-100 text-emerald-700'
+                        }`}>
+                          {product.total_quantity}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex items-center space-x-3">
+                        <button onClick={() => setViewBarcode(product)} className="text-slate-400 hover:text-slate-700" title="View Barcode">
+                          <QrCode className="w-5 h-5" />
+                        </button>
+                        {userRole !== 'Operator' && (
+                          <>
+                            <button onClick={() => openEditModal(product)} className="text-indigo-400 hover:text-indigo-600" title="Edit">
+                              <Pencil className="w-5 h-5" />
+                            </button>
+                            <button onClick={() => handleDelete(product.id)} className="text-red-400 hover:text-red-600" title="Delete">
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Edit/Create Modal */}
@@ -199,7 +206,7 @@ export default function InventoryList() {
         </div>
       )}
 
-      {/* Barcode Modal (Same as before) */}
+      {/* Barcode Modal */}
       {viewBarcode && (
         <div className="fixed inset-0 bg-slate-900/50 flex justify-center items-center z-50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm text-center">

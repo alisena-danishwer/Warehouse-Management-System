@@ -1,10 +1,17 @@
 
+
+
 # Artiselite WMS (Warehouse Management System)
 
-A full-stack, enterprise-grade Warehouse Management System designed to modernize inventory tracking and operations. This application features role-based security, real-time analytics, and automated workflows for inbound and outbound stock.
+A full-stack, enterprise-grade Warehouse Management System designed to modernize inventory tracking and operations. This application features role-based security, real-time analytics, and is fully responsive for mobile and tablet devices.
 
+![Dashboard Preview](![alt text](image.png))
+*(Replace this link with a screenshot of your actual dashboard)*
 
-## 🚀 Features
+## 🚀 Live Demo
+**[Insert your AWS EC2 IP Address Here]**
+
+## 🌟 Features
 
 ### Core Modules
 - **🔐 Secure Authentication:** JWT-based login with hashed passwords (Bcrypt).
@@ -14,7 +21,12 @@ A full-stack, enterprise-grade Warehouse Management System designed to modernize
   - **Admin:** Full system access (Manage Users, Delete Products, View Logs).
   - **Operator:** Restricted access (View Inventory, Process Orders only).
 
-### 🌟 Advanced Features (Internship Requirements)
+### 📱 Modern & Responsive UI
+- **Responsive Sidebar:** Collapsible navigation menu optimized for mobile and tablets.
+- **Mobile-First Tables:** Horizontal scrolling for complex data tables on small screens.
+- **Enterprise Dashboard:** Gradient visuals, Chart.js analytics, and modern iconography.
+
+### ⚙️ Advanced Capabilities
 1.  **📊 Inventory Valuation:** Real-time calculation of total stock value based on dynamic pricing.
 2.  **📜 System Audit Logs:** Automatically records critical actions (e.g., "Admin deleted iPhone 13") for security and accountability.
 3.  **🏷️ Barcode Integration:** Auto-generates unique, scannable barcodes for every product SKU.
@@ -34,6 +46,7 @@ A full-stack, enterprise-grade Warehouse Management System designed to modernize
 
 ### DevOps
 - **Docker & Docker Compose:** Containerized environment for consistent deployment.
+- **AWS EC2:** Cloud-ready for production deployment.
 
 ## ⚙️ Installation & Setup
 
@@ -55,14 +68,14 @@ docker compose up -d --build
 
 
 3. **Access the System**
-* **Frontend Dashboard:** [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) (or port 5173 depending on your vite config)
+* **Frontend Dashboard:** [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000)
 * **Backend API:** [http://localhost:5000](https://www.google.com/search?q=http://localhost:5000)
 
 
 
 ## 🔐 Default Admin Credentials
 
-When the system starts for the first time, it automatically creates a Super Admin account:
+When the system starts for the first time, it automatically creates a Super Admin account if one does not exist:
 
 * **Username:** `admin`
 * **Password:** `Test123`
@@ -89,8 +102,6 @@ artiselite-wms/
 
 ---
 
-*Developed by Ali Sena Danishwer for the Artiselite Internship Assessment.*
+*Developed by Ali Sena Danishwer Software Engineer*
 
 ```
-
-
