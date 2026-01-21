@@ -6,10 +6,6 @@
 A full-stack, enterprise-grade Warehouse Management System designed to modernize inventory tracking and operations. This application features role-based security, real-time analytics, and is fully responsive for mobile and tablet devices.
 
 ![Dashboard Preview](![alt text](image.png))
-*(Replace this link with a screenshot of your actual dashboard)*
-
-## 🚀 Live Demo
-**[Insert your AWS EC2 IP Address Here]**
 
 ## 🌟 Features
 
@@ -102,6 +98,6 @@ artiselite-wms/
 
 ---
 
-*Developed by Ali Sena Danishwer Software Engineer*
+*Developed by Ali Sena Danishwer [Software Engineer]*
 
 ```
