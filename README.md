@@ -1,5 +1,5 @@
 
-# ArtisElite WMS (Warehouse Management System)
+# Artiselite WMS (Warehouse Management System)
 
 A full-stack, enterprise-grade Warehouse Management System designed to modernize inventory tracking and operations. This application features role-based security, real-time analytics, and automated workflows for inbound and outbound stock.
 
