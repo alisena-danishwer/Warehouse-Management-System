@@ -3,8 +3,6 @@
 
 A full-stack, enterprise-grade Warehouse Management System designed to modernize inventory tracking and operations. This application features role-based security, real-time analytics, and automated workflows for inbound and outbound stock.
 
-![Dashboard Preview](https://via.placeholder.com/800x400.png?text=ArtisElite+WMS+Dashboard)
-*(Note: Replace this link with a screenshot of your actual dashboard later)*
 
 ## 🚀 Features
 
